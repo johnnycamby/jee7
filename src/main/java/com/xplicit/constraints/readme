@@ -2,17 +2,17 @@
 
  =================== Java Annotation Type  ==================================================
  - @interface keyword is used to declare a new annotation type.
-   Constraint Annotation
-  =============================================================================================
+   
+  ================== Constraint Annotation ===================================================
   - its retention policy contains RUNTIME
   - The annotation must be annotated with javax.validation.Constraint (which refers to its list of 
    constraint validation implementations)
   - They are regular annotations, so they must define some meta-annotations.
   
   ===============================================================================================
-  - @Target ::    Specifies the target to which the annotation can be used.
-  - @Retention :: Specifies how the annotation will be operated. It is mandatory to use at least RUNTIME 
-                  to allow the provider to inspect your objects at runtime.
+  - @Target     :: Specifies the target to which the annotation can be used.
+  - @Retention  :: Specifies how the annotation will be operated. It is mandatory to use at least RUNTIME 
+                   to allow the provider to inspect your objects at runtime.
   - @Documented :: This optional meta-annotation specifies that this annotation will be included in the 
                    Javadoc or not.
   - message     :: This attribute(which generally is defaulted to a key) provides the ability for a constraint
@@ -24,7 +24,7 @@
   
 
 // ================  http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html    ============
-  - Class<?>   : if the class being modeled is unknown
-  - Class<?>[] : getClasses()
-                 Returns an array containing Class objects representing all the public classes and 
-                interfaces that are members of the class represented by this Class object. 
+  - Class<?>    :: if the class being modeled is unknown
+  - Class<?>[]  :: getClasses()
+                   Returns an array containing Class objects representing all the public classes and 
+                   interfaces that are members of the class represented by this Class object. 
