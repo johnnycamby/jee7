@@ -9,7 +9,6 @@ package com.xplicit.model;
 import static com.xplicit.model.Client.FIND_ALL;
 import static com.xplicit.model.Product.FIND_BY_CATEGORY_NAME;
 import java.io.Serializable;
-import java.util.Locale.Category;
 import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
