@@ -23,25 +23,6 @@ import javax.validation.constraints.Size;
  *  
  */
 
-/**
- * 
- * ======================================= ReadMe  ==============================================
- *  Constraint Annotation
- * =============================================================================================
- * - its retention policy contains RUNTIME
- * - The annotation must be annotated with javax.validation.Constraint (which refers to its list of constraint validation implementations)
- * - They are regular annotations, so they must define some meta-annotations.
- * 
- * ===============================================================================================
- * - @Target :: Specifies the target to which the annotation can be used.
- * - @Retention :: Specifies how the annotation will be operated. It is mandatory to use at least RUNTIME to allow the provider to inspect your objects at runtime.
- * - @Documented :: This optional meta-annotation specifies that this annotation will be included in the Javadoc or not.
- * - message: This attribute (which generally is defaulted to a key) provides the ability for a constraint to return an internationalized error message if the constraint is not valid.
- * - groups: Groups are typically used to control the order in which constraints are evaluated, or to perform partial validation.
- * - payload: This attribute is used to associate metadata information with a constraint.
- * ===============================================================================================
- * 
- */
 @Constraint(validatedBy = {})
 @Size(min = 5)
 @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\." 
