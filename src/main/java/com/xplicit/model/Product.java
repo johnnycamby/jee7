@@ -109,10 +109,59 @@ public class Product implements Serializable{
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(final Category category) {
         this.category = category;
     }
     
+    // ===================== Object overriden methods ========================
     
+    @Override
+    public int hashCode() {
+        
+        final int code = 24;
+        int result = 1;
+        result = code * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Product)) {
+            return false;
+        }
+        
+        Product other = (Product)obj;
+        
+        if (id != null) {
+            
+            if (!id.equals(other.id)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        
+        
+        StringBuilder sb = new StringBuilder();
+                sb.append(getClass().getSimpleName())
+                .append(" ")
+                .append(" : version : ")
+                .append(version)
+                .append(" : name : ")
+                .append(name)
+                .append(" : description : ")
+                .append(description);
+        
+        return sb.toString();
+        
+    }
     
 }

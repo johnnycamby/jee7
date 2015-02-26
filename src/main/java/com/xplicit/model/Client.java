@@ -344,8 +344,6 @@ public class Client implements Serializable{
         return sb.toString();
         
     }
-    
-    
-    
+      
     
 }
