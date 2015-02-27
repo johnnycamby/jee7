@@ -126,13 +126,7 @@ public abstract class AbstractService<T> {
         return  pageItems;
     }
 
-    public abstract Predicate[] getSearchPredicates(Root<T> root, T example);
-    
-    
-    
-    
-    
-    
+    protected abstract Predicate[] getSearchPredicates(Root<T> root, T example);
     
     
 }

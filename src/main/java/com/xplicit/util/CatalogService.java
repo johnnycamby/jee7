@@ -7,6 +7,7 @@
 package com.xplicit.util;
 
 import com.xplicit.model.Category;
+import com.xplicit.model.Item;
 import com.xplicit.model.Product;
 import java.io.Serializable;
 import java.util.List;
@@ -97,7 +98,74 @@ public class CatalogService implements Serializable{
         return product;
     }
     
+    public Product updateProduct(@NotNull Product product){
     
+        return em.merge(product);
+    }
     
+    public void removeProduct(@NotNull Product product){
+    
+        em.merge(em.merge(product));
+    }
+    
+    public void removeProduct(@NotNull Long productId){    
+        removeProduct(findPoduct(productId));
+    }
+    
+    public List<Item> findItems(@NotNull Long productId){
+    
+        TypedQuery<Item> tq = em.createNamedQuery(Item.FIND_BY_PRODUCT_ID, Item.class);
+        tq.setParameter("productId", productId);
+        return tq.getResultList();
+        
+    }
+    
+    public Item findItem(@NotNull Long itemId){
+    
+        return em.find(Item.class, itemId);
+    }
+    
+    public List<Item> searchItem(String keyword){
+    
+        if(keyword == null)
+            keyword = "";
+        
+        TypedQuery<Item> tq = em.createNamedQuery(Item.SEARCH, Item.class);
+        tq.setParameter("keyword", "%" + keyword.toUpperCase() + "%");
+        return  tq.getResultList();
+    }
+    
+    public List<Item> findAllItems(){
+    
+        TypedQuery<Item> tq = em.createNamedQuery(Item.FIND_ALL, Item.class);
+        return tq.getResultList();
+    }
+    
+    public Item createItem(@NotNull Item item){
+    
+        if (item.getProduct() != null && item.getProduct().getId() == null) {
+            em.persist(item.getProduct());
+            if(item.getProduct().getCategory() != null && item.getProduct().getCategory().getId() == null)
+                em.persist(item.getProduct().getCategory());
+        }
+        
+        em.persist(item);
+        return item;
+    }
+    
+    public Item updateItem(@NotNull Item item){
+    
+        return em.merge(item);
+    }
+    
+    public void removeItem(@NotNull Item item){
+    
+        em.remove(em.merge(item));
+    }
+    
+    public void removeItem(@NotNull Long itemId){
+    
+        removeItem(findItem(itemId));
+    }
     
 }
